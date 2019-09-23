@@ -5,7 +5,7 @@ module Lit
     module TranslationKeyWrapper
       def translate(key, options = {})
         count = options[:count]
-        options = options.with_indifferent_access
+        #options = options.with_indifferent_access
         key = scope_key_by_partial(key)
         key = pluralized_key(key, count) if count
 
