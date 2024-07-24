@@ -140,7 +140,7 @@ module Lit
           end
           # if we have content now, let's store it in cache
           if content.present?
-            content = Array.wrap(content).compact.reject(&:empty?).reverse.find do |default_cand|
+            content = Array.wrap(content).compact.reject { |x| (x.empty? rescue true) }.reverse.find do |default_cand|
               @cache[key_with_locale] = default_cand
               @cache[key_with_locale]
             end
