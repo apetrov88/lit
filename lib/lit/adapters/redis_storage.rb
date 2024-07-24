@@ -110,7 +110,7 @@ module Lit
 
     def subtree_of_key(key)
       keys_of_subtree = Lit.redis.keys("#{_prefixed_key(key)}*")
-      return nil if keys_of_subtree.empty?
+      return nil if (keys_of_subtree.empty? rescue true)
 
       values_of_subtree = Lit.redis.mget(keys_of_subtree)
       cache_localizations = form_cache_localizations(keys_of_subtree, values_of_subtree)
